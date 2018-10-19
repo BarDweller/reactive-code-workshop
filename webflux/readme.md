@@ -52,19 +52,19 @@ You'll be doing this work in `com.example.WebFluxApplication#myCommandLineRunner
 
 ### Exercise 2: Nested Flux and substreams
 
-#### 2a. Make lots of observables
+#### 2a. More Flux!
 
 1. process of stream of lines to split into words `Flux<String[]>`
 2. process stream of lines into `Flux<Flux<String>>` of words
 
-#### 2b. Collapse lots of observables back together
+#### 2b. Collapse nested Flux
 
-Make `dumpObservableToStdOut` print individual words again.
+Make `dumpFluxToStdOut` print individual words again.
 
 1. Use `flatMap` to recombine list from step 1 above
 2. Use `flatMap` to process list from step 2 above
 
-#### 2c. Group lots of observables
+#### 2c. GroupedFlux
 
 Start with stream of (optionally lowercase, punctuation-free) words:
 
@@ -82,9 +82,9 @@ Start with stream of (optionally lowercase, punctuation-free) words:
 
 1. Use `map` make a stream of string lengths
 2. Use `zipWith` to combine streams (lengths and words) into `Flux<Tuple2<Integer,String>>`
-3. Use `map` to show contents as single `Flux<String>`
+3. Use `map` to show tuples as single `Flux<String>`, e.g. "length: string"
 4. ***Optional***
     * Use `groupBy` to group `Flux<Tuple2<Integer,String>>` by length
-    * Use `flatMap` to show contents as single `Flux<String>`
+    * Use `flatMap` to show contents as single `Flux<String>`, e.g. "length: string"
 5. ***Really Really Optional***
     * What happens if you use `concatMap` instead of `flatMap`? Why?
